@@ -8,8 +8,22 @@
 }
 .todolist {
 
-  background-color: teal;
-  border:2px solid yellowgreen;
-  border-radius: 5px;
+  background-color: gold;
+  border:3px solid yellowgreen;
+  border-radius: 20px;
   padding: 20px;
+}
+.error {
+  border: red 1px solid;
+}
+
+.error-message {
+  color: red;
+}
+
+.active-filter {
+  background-color: saddlebrown;
+}
+.is-done {
+  opacity: 0.5;
 }
