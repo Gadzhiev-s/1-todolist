@@ -1,29 +1,29 @@
 .App {
-  padding: 30px;
-  display: flex;
+  /*padding: 30px;*/
+  /*display: flex;*/
 }
 
-.App > div {
-  margin-right: 50px;
-}
-.todolist {
+/*.App > div {*/
+/*  margin-right: 50px;*/
+/*}*/
+/*.todolist {*/
 
-  background-color: gold;
-  border:3px solid yellowgreen;
-  border-radius: 20px;
-  padding: 20px;
-}
-.error {
-  border: red 1px solid;
-}
+/*  background-color: white;*/
+/*  border:3px solid yellowgreen;*/
+/*  border-radius: 20px;*/
+/*  padding: 20px;*/
+/*}*/
+/*.error {*/
+/*  border: red 1px solid;*/
+/*}*/
 
-.error-message {
-  color: red;
-}
+/*.error-message {*/
+/*  color: red;*/
+/*}*/
 
-.active-filter {
-  background-color: saddlebrown;
-}
-.is-done {
-  opacity: 0.5;
-}
+/*.active-filter {*/
+/*  background-color: saddlebrown;*/
+/*}*/
+/*.is-done {*/
+/*  opacity: 0.5;*/
+/*}*/

@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
 import './App.css';
-import TodoList, {TaskType} from "./todoList";
+import Todolist, {TaskType} from "./Todolist";
 import {v1} from "uuid";
 import AddItemForm from "./AddItemForm";
+import {ButtonAppBar} from "./ButtonAppBar";
+import {Container, Grid, Paper} from "@mui/material";
 
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
 
-type TodolistsType = {
+export type TodolistsType = {
     id: string,
     title: string,
     filter: FilterValuesType
 }
-type TaskAssocType = {
+export type TaskAssocType = {
     [key: string]: TaskType[]
 }
 
@@ -74,7 +76,12 @@ function App() {
 
     return (
         <div className="App">
+            <ButtonAppBar/>
+            <Container fixed>
+                <Grid container>
             <AddItemForm callBack={addTodolist}/>
+                </Grid>
+                <Grid container spacing={3} style={{padding:'25px'}}>
             {todolists.map((el) => {
                 let tasksForTodolist = tasks[el.id];
                 if (el.filter === 'active') {
@@ -84,7 +91,9 @@ function App() {
                     tasksForTodolist = tasksForTodolist.filter(t => t.isDone === true)
                 }
                 return (
-                    <TodoList
+                    <Grid item key={el.id}>
+                        <Paper elevation={5} style={{padding:'25px',borderRadius: '20px'}}>
+                    <Todolist
                         todolistId={el.id}
                         key={el.id}
                         title={el.title}
@@ -98,8 +107,12 @@ function App() {
                         updateTask={updateTask}
                         updateTodolist={updateTodolist}
                     />
+                        </Paper>
+                    </Grid>
                 )
             })}
+                </Grid>
+            </Container>
         </div>
     );
 }
