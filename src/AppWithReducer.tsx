@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from 'react';
+import React, {useCallback, useReducer, useState} from 'react';
 import './App.css';
 import Todolist, {TaskType} from "./Todolist";
 import {v1} from "uuid";
@@ -31,7 +31,7 @@ function AppWithReducer() {
     let todolistId1 = v1()
     let todolistId2 = v1()
 
-    let [todolists, dispatchTodolistsReducer] = useReducer(todolistsReduser, [
+    let [todolists, dispatchToTodolistsReducer] = useReducer(todolistsReduser, [
         {id: todolistId1, title: 'What to learn', filter: 'all'},
         {id: todolistId2, title: 'What to buy', filter: 'all'},
     ])
@@ -55,22 +55,22 @@ function AppWithReducer() {
     }
     const updateTodolist = (todolistId: string, updateTitle: string) => {
         const action = updateTodolistTitleACType(todolistId, updateTitle)
-        dispatchTodolistsReducer(action)
+        dispatchToTodolistsReducer(action)
     }
     const removeTodolist = (todolistId: string) => {
         const action = removeTodolistAC(todolistId)
         dispatchTasksReducer(action)
-        dispatchTodolistsReducer(action)
+        dispatchToTodolistsReducer(action)
     }
     const removeTask = (todolistId: string, taskId: string) => {
         const action = removeTaskAc(todolistId, taskId)
         dispatchTasksReducer(action)
     }
-    const addTodolist = (newTitle: string) => {
+    const addTodolist = useCallback((newTitle: string) => {
         const action = addTodolistAC(newTitle)
-        dispatchTodolistsReducer(action)
+        dispatchToTodolistsReducer(action)
         dispatchTasksReducer(action)
-    }
+    },[]);
     const addTask = (todolistId: string, title: string) => {
         const action = addTaskAC(todolistId, title)
         dispatchTasksReducer(action)
@@ -82,7 +82,7 @@ function AppWithReducer() {
     }
     const changerFilter = (todolistId: string, value: FilterValuesType) => {
         const action = changerFilterAC(todolistId, value)
-        dispatchTodolistsReducer(action)
+        dispatchToTodolistsReducer(action)
     }
     return (
         <div className="App">

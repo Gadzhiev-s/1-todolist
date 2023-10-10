@@ -7,8 +7,9 @@ type EditableSpanProps = {
 
 }
 
-const EditableSpan = (props: EditableSpanProps) => {
+const EditableSpan =React.memo( (props: EditableSpanProps) => {
     const [edit, setEdit] = useState(false)
+    console.log('EditablSpan')
     const editFc = () => {
         setEdit(!edit)
         if (edit){
@@ -24,10 +25,9 @@ const EditableSpan = (props: EditableSpanProps) => {
     }
     return (
         edit ?<TextField id="standard-basic"  variant="standard" value={updateTitle} onBlur={editFc} onChange={onChangeHandler} autoFocus />
-            // <input value={updateTitle} onBlur={editFc} onChange={onChangeHandler} autoFocus/>
             : <span onDoubleClick={editFc}>{props.oldTitle} </span>
     );
 
-}
+})
 
 export default EditableSpan;

@@ -6,6 +6,7 @@ type SuperCheckBoxType = {
     isDone: boolean,
 }
 
+
 export const SuperCheckBox = (props: SuperCheckBoxType) => {
 
 return (

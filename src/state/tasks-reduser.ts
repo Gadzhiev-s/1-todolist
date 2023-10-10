@@ -14,7 +14,8 @@ type RemoveTaskAcType = ReturnType<typeof removeTaskAc>
 type AddTaskACType = ReturnType<typeof addTaskAC>
 type ChangeTaskStatusACType = ReturnType<typeof changeTaskStatusAC>
 type ChangeTaskTitleACType = ReturnType<typeof changeTaskTitileAC>
-export const tasksReducer = (state: TaskAssocType, action: ActionsType): TaskAssocType => {
+let initialState: TaskAssocType = {}
+export const tasksReducer = (state = initialState, action: ActionsType): TaskAssocType => {
     switch (action.type) {
         case 'REMOVE-TASK':
             return {
@@ -54,7 +55,7 @@ export const tasksReducer = (state: TaskAssocType, action: ActionsType): TaskAss
             delete copyState[action.payload.id]
             return copyState
         default :
-            throw new Error('i don t understand this type')
+            return state
 
     }
 
